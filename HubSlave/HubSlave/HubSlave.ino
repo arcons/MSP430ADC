@@ -16,23 +16,21 @@
  by Brian Baker for MSP430
  
  This example code is in the public domain.
- 
+ //
+ /Setup the UUID to 0x0777
+ /AT+UUID 0x0777
+ /
  */
- 
- /*
- Name: WWECGLEFT
- MAC ADDR:74DAEAA8A7AE 
- IMME: 0
- PIN: Default 
- */ 
 #include <SoftwareSerial.h>
 
 SoftwareSerial mySerial(P1_1, P1_2); // RX, TX
+
 
 void setup()  
 {
   // Open serial communications and wait for port to open:
   Serial.begin(9600);
+
   Serial.println("Hello Karson");
 
   // set the data rate for the SoftwareSerial port
@@ -42,15 +40,7 @@ void setup()
 
 void loop() // run over and over
 {
-//  if (mySerial.available())
-//  {
-//    Serial.println("Y -4.370000 157");
-//    Serial.write(mySerial.read());
-//  }
-//  if (Serial.available())
-//    mySerial.write(Serial.read());
-//    
-    //Serial.write("Y -4.370000 157")
+  if(Serial.availble)
     uint8_t data[13] = {0x00, 0x01, 0x02, 0x03, 0x00, 0x01, 0x02, 0x03, 0x00, 0x01, 0x02, 0x03, 0x10};
     Serial.write(data, 13);
     delay(500);

@@ -28,6 +28,7 @@ void setup(void)
 
 void loop(void) 
 {
+  delay(1000);
   int16_t adc0;
 //  adc1, adc2, adc3;
   Serial.print("AIN0: "); Serial.println(adc0);
@@ -104,7 +105,7 @@ static void writeRegister(uint8_t i2cAddress, uint8_t reg, uint16_t value) {
      Serial.println(value & 0xFF);
   Wire.write((uint8_t)(value & 0xFF));
      Serial.println("End of transmission");
-     Wire.endTransmission(true);
+     Wire.endTransmission();
 }
 
 int16_t readRegister(uint8_t i2cAddress, uint8_t reg) {
