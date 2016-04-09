@@ -18,7 +18,7 @@
 
 Adafruit_ADS1115 ads;  /* Use this for the 16-bit version */
 float voltage = 0.0;
-
+float voltage2 = 0.0;
 
 void setup()  
 {
@@ -29,28 +29,26 @@ void setup()
  // mySerial.begin(9600);
   Serial.println("Starting ADC");
   ads.begin();
-  Serial.println("No error with the ads begin");  
+  Serial.println("No error with the ads begin"); 
+  //ads.startComparator_SingleEnded(0, 1000); 
 }
 
 void loop() // run over and over
 {
-  Serial.print("Beginning ADC Loop ");
-  int16_t adc0;
+  int16_t adc0, adc1;
 //  adc1, adc2, adc3;
-  if(Serial.availible())
-  {
-   //peform  
-  }
   int16_t timestamp;
   //timestamp = millis();
-  Serial.println("Attempting ads read...");
+  //adc0 = ads.getLastConversionResults();
   adc0 = ads.readADC_SingleEnded(0);
+  //adc1 = ads.readADC_SingleEnded(1);
   voltage = (adc0 * 0.1875)/1000;
-  Serial.print("AIN0: ");
-  Serial.println(adc0);
+  //voltage2 = (adc1 * 0.1875)/1000;
+  //Serial.print("AIN0: ");
+  //Serial.println(adc0);
+  //  Serial.print("AIN1: "); Serial.println(adc1);
   Serial.print("\tVoltage: ");
-  Serial.println(voltage, 7);  
+  Serial.println(voltage);  
   Serial.println(" ");
-  
-  delay(200);
+  delay(100); 
 }
