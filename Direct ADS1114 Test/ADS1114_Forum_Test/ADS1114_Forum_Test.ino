@@ -24,7 +24,7 @@ void setup()
   // AINP = AIN0 and AINN = AIN1, +/- 2.048V
   Wire.write(0x84);
   // Continuous conversion mode, 128 SPS
-  //Wire.write(0x83);
+  Wire.write(0x83);
     // Continuous conversion mode, 128 SPS
   Wire.write(0xC3);
   // Stop I2C Transmission
@@ -57,11 +57,13 @@ void loop()
 
   // Convert the data
   float raw_adc = (data[0] * 256.0) + data[1];
-  float output = 65536-raw_adc;
   // Output data to serial monitor
+  float voltage = raw_adc * 0.0000625;
   Serial.print("Digital value of analog input : ");
   Serial.println(raw_adc);
+  Serial.print("Digital value of voltage input : ");
+  Serial.println(voltage);
   //  digitalWrite(LED, HIGH);   // turn the LED on (HIGH is the voltage level)
-  delay(100);
+  delay(50);
   //digitalWrite(LED, LOW);    
 }
