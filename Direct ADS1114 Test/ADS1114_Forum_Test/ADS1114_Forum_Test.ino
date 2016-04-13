@@ -28,6 +28,7 @@ void setup()
     // Continuous conversion mode, 128 SPS
   Wire.write(0xC3);
   // Stop I2C Transmission
+  Serial.println("Locking on end transmission");
   Wire.endTransmission();
   Serial.println("Starting ADC analysis");
   delay(300);
