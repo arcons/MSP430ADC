@@ -40,7 +40,7 @@ void setup()
   Wire.write(0xC3);
   //Allow the LED to output
   Wire.endTransmission();
-  digitalWrite(LED, LOW);
+  digitalWrite(LED, HIGH);
   //ads.startComparator_SingleEnded(0, 1000);
   delay(300);
 }
@@ -63,7 +63,7 @@ void loop() // run over and over
   if(start)
   {
     digitalWrite(LED, HIGH);
-    //Serial.println("TEST TEST TEST");
+    Serial.println("TEST TEST TEST");
     runTime = millis();
     char output[4];
     unsigned int data[2];
